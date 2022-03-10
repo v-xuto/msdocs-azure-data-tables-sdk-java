@@ -1,3 +1,7 @@
+﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+// for details on configuring this project to bundle and minify static web assets.
+
+// Write your Javascript code.
     var windDirectionArray = ["CALM","N","NE","NW","E","W","SW","SE","S","VARIABLE"];
     var tableEntityBaseItem1 = ["temperature","humidity","barometer","windSpeed","precipitation"];
     var tableEntityBaseItem2 = ["Temperature","Humidity","Barometer","WindSpeed","Precipitation"];
