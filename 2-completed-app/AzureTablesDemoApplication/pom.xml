@@ -146,12 +146,12 @@
 			<id>local</id>
 			<properties>
 				<azure.tables.uri>
-					<![CDATA[https://cosmos-msdocs-tables-sdk-demo-ywj.table.cosmos.azure.com:443/]]>
+					<![CDATA[YOUR-DATA-TABLES-SERVICE-URL]]>
 				</azure.tables.uri>
-				<azure.tables.account>cosmos-msdocs-tables-sdk-demo-ywj</azure.tables.account>
-				<azure.tables.key>sJg6LkAqWOzz5OP93YY8keZViEVgZ2Zdjoi2PTcrJMwNAEnlUia0CKrIJKZ9ETVYshUgt5FOTIrjKlsYG9Bdmg==</azure.tables.key>
-				<azure.tables.secondaryKey>WyChqnJlrqlIEOr7g9P5roUoaL7qyj7LsrpZel2NcRhKqikruBnqEVYbTVSRhOHoEDVn6V5sqzHn7Wmlr8v6Ew==</azure.tables.secondaryKey>
-				<azure.tables.tableName>WeatherData</azure.tables.tableName>
+				<azure.tables.account>YOUR-DATA-TABLES-SERVICE-ACCOUNT</azure.tables.account>
+				<azure.tables.key>YOUR-DATA-SERVICE-ACCESS-KEY</azure.tables.key>
+				<azure.tables.secondaryKey>YOUR-DATA-TABLES-SERVICE-SECONDARY-ACCESS-KEY</azure.tables.secondaryKey>
+				<azure.tables.tableName>YOUR-DATA-TABLE-NAME</azure.tables.tableName>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>
