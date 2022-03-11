@@ -1,0 +1,98 @@
+<div class="container" id="filterArea">
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-3 fs-5 fw-bold border-bottom border-2">
+            Column
+        </div>
+        <div class="col-md-6 fs-5 fw-bold border-bottom border-2">
+            Criteria
+        </div>
+    </div>
+
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-3 fw-bold">
+            Station Name (Partition Key)
+        </div>
+        <div class="col-md-4 offset-md-2 text-end">
+            <input type="text" id="partitionKeyFilter" name="partitionKey" class="form-control" placeholder="Station name">
+        </div>
+    </div>
+
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-3 fw-bold">
+            Date (Row Key)
+        </div>
+        <div class="col-md-2">
+            Min date/time:
+        </div>
+        <div class="col-md-2">
+            <input type="date" id="rowKeyDateStartFilter" name="rowKeyDateStart" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <input type="time" id="rowKeyTimeStartFilter" name="rowKeyTimeStart" class="form-control">
+        </div>
+    </div>
+
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-2 offset-md-3">
+            Max date/time:
+        </div>
+        <div class="col-md-2">
+            <input type="date" id="rowKeyDateEndFilter" name="rowKeyDateEnd" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <input type="time" id="rowKeyTimeEndFilter" name="rowKeyTimeEnd" class="form-control">
+        </div>
+    </div>
+
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-3 fw-bold">
+            Temperature
+        </div>
+        <div class="col-md-2">
+            Min temperature:
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="minTemperatureFilter" name="minTemperature" class="form-control" placeholder="Min temperature">
+        </div>
+    </div>
+
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-2 offset-md-3">
+            Max temperature:
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="maxTemperatureFilter" name="maxTemperature" class="form-control" placeholder="Max temperature">
+        </div>
+    </div>
+
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-3 fw-bold">
+            Precipitation
+        </div>
+        <div class="col-md-2">
+            Min precipitation:
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="minPrecipitationFilter" name="minPrecipitation" class="form-control" placeholder="Min precipitation">
+        </div>
+    </div>
+
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-2 offset-md-3">
+            Max precipitation:
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="maxPrecipitationFilter" name="maxPrecipitation" class="form-control" placeholder="Max precipitation">
+        </div>
+    </div>
+
+    <div class="row g-3 mb-2 justify-content-center">
+        <div class="col-md-4 offset-md-5 text-end">
+            <button id="submit" class="btn btn-success">Filter data</button>
+        </div>
+    </div>
+</div>
+<hr>
+<h3>Weather Data</h3>
+<table class="table table-sm mb-1" id="result-table">
+</table>
