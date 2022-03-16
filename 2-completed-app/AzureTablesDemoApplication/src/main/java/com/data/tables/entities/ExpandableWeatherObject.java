@@ -1,6 +1,11 @@
 package com.data.tables.entities;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class ExpandableWeatherObject {
 
@@ -8,7 +13,7 @@ public class ExpandableWeatherObject {
 
     private String observationDate;
 
-    private Map<String, Object> propertyMap = new HashMap<String, Object>();
+    private Map<String, Object> propertyMap = new HashMap<>();
 
     public String getStationName() {
         return stationName;
@@ -47,11 +52,8 @@ public class ExpandableWeatherObject {
     }
 
     public List<String> getPropertyKeys() {
-        List<String> list = Collections.synchronizedList(new ArrayList<String>());
-        Iterator<String> iterators = this.propertyMap.keySet().iterator();
-        while (iterators.hasNext()) {
-            list.add(iterators.next());
-        }
+        List<String> list = Collections.synchronizedList(new ArrayList<>());
+        list.addAll(this.propertyMap.keySet());
         return Collections.unmodifiableList(list);
     }
 

@@ -1,72 +1,20 @@
 package com.data.tables.untils;
 
-import com.azure.core.credential.AzureNamedKeyCredential;
-import com.azure.data.tables.TableAsyncClient;
-import com.azure.data.tables.TableClientBuilder;
 import com.azure.data.tables.models.TableEntity;
 import com.data.tables.common.Constants;
 import com.data.tables.entities.ExpandableWeatherObject;
 import com.data.tables.models.WeatherDataModel;
 import com.data.tables.models.WeatherInputModel;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Component
 public class WeatherDataUtils {
-
-
-    private static String URI;
-
-    private static String KEY;
-
-    private static String ACCOUNT;
-
-    private static String TABLE_NAME;
-
-    @Value("${azure.tables.uri}")
-    public void setURIStatic(String uri) {
-        WeatherDataUtils.URI = uri;
-    }
-
-    @Value("${azure.tables.key}")
-    public void setKeyStatic(String key) {
-        WeatherDataUtils.KEY = key;
-    }
-
-    @Value("${azure.tables.account}")
-    public void setAccountStatic(String account) {
-        WeatherDataUtils.ACCOUNT = account;
-    }
-
-
-    @Value("${azure.tables.tableName}")
-    public void setTableNameStatic(String tableName) {
-        WeatherDataUtils.TABLE_NAME = tableName;
-    }
-
-    /**
-     * Get a table async client
-     *
-     * @return TableAsyncClient
-     */
-    public static TableAsyncClient createAsyncClient() {
-        return new TableClientBuilder()
-                .endpoint(URI)
-                .credential(new AzureNamedKeyCredential(ACCOUNT, KEY))
-                .tableName(TABLE_NAME)
-                .buildAsyncClient();
-    }
 
     /**
      * Format row key of table entity
-     *
-     * @param observationDate
-     * @param observationTime
      * @return String
      */
     public static String formatRowKey(String observationDate, String observationTime) {
@@ -79,7 +27,6 @@ public class WeatherDataUtils {
     /**
      * Create table entity from input data of weather data
      *
-     * @param model
      * @return TableEntity
      */
     public static TableEntity createTableEntity(ExpandableWeatherObject model) {
@@ -92,7 +39,6 @@ public class WeatherDataUtils {
     /**
      * Create table entity from input data of weather data
      *
-     * @param model
      * @return TableEntity
      */
     public static TableEntity createTableEntity(WeatherInputModel model) {
@@ -111,10 +57,9 @@ public class WeatherDataUtils {
     /**
      * Convert table entity to java bean of weather data
      *
-     * @param entity
      * @return WeatherDataModel
      */
-    public static WeatherDataModel tableEntityToWeatherDataModel(TableEntity entity) {
+    public static WeatherDataModel mapTableEntityToWeatherDataModel(TableEntity entity) {
         WeatherDataModel observation = new WeatherDataModel(
                 entity.getPartitionKey(), entity.getRowKey(),
                 entity.getTimestamp(), entity.getETag());
@@ -125,7 +70,6 @@ public class WeatherDataUtils {
     /**
      * get entity keys list
      *
-     * @param weatherDataModelList
      * @return List<String>
      */
     public static List<String> getListOfKeys(List<WeatherDataModel> weatherDataModelList) {
@@ -144,7 +88,6 @@ public class WeatherDataUtils {
     /**
      * filled value of list item
      *
-     * @param weatherDataModelList
      * @return List<WeatherDataModel>
      */
     public static List<WeatherDataModel> filledValue(List<WeatherDataModel> weatherDataModelList) {
@@ -161,8 +104,6 @@ public class WeatherDataUtils {
     /**
      * Rearrange and set properties of table entity
      *
-     * @param target
-     * @param source
      */
     private static void rearrangeEntityProperties(Map<String, Object> target, Map<String, Object> source) {
         Constants.DEFAULT_LIST_OF_KEYS.forEach(key -> {

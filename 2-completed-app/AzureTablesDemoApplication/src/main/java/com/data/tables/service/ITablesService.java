@@ -2,6 +2,7 @@ package com.data.tables.service;
 
 import com.data.tables.entities.ExpandableWeatherObject;
 import com.data.tables.entities.UpdateWeatherObject;
+import com.data.tables.models.FilterResultsInputModel;
 import com.data.tables.models.SampleDataInputModel;
 import com.data.tables.models.WeatherDataModel;
 import com.data.tables.models.WeatherInputModel;
@@ -11,7 +12,7 @@ public interface ITablesService {
 
     List<WeatherDataModel> getAllRows();
 
-    List<WeatherDataModel> getEntitiesByFilter(String filter);
+    List<WeatherDataModel> getFilteredRows(FilterResultsInputModel model);
 
     void removeEntity(WeatherInputModel model);
 
