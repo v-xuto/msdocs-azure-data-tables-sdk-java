@@ -25,14 +25,24 @@
 
         $("input[id$='Filter']").each(function(index, item){
             if (item.id != 'partitionKeyFilter' && item.id != 'rowKeyDateStartFilter'
-                && item.id != 'rowKeyDateEndFilter' && itemId != 'rowKeyTimeStartFilter'
+                && item.id != 'rowKeyDateEndFilter' && item.id != 'rowKeyTimeStartFilter'
                 && item.id != 'rowKeyTimeEndFilter') {
                 var itemId = "#" + item.id;
                 if ($(itemId).val() != "" ) {
                     var isNumeric = $.isNumeric($(itemId).val());
                     if (isNumeric == false) {
                         validated = false;
-                        $(itemId).after("<label id=\"" + item.id + "-error\" class=\"error\" for=\"" + item.id + "\">Please enter a valid number.</label>")
+                        if (item.id == 'minTemperatureFilter' || item.id == 'maxTemperatureFilter') {
+                            $(itemId).after("<label id=\"" + item.id + "-error\" class=\"error\" for=\"" + item.id + "\">Please enter a vaule between -100 and 200.</label>")
+                        } else {
+                            $(itemId).after("<label id=\"" + item.id + "-error\" class=\"error\" for=\"" + item.id + "\">Please enter a vaule between 0 and 300.</label>")
+                        }
+                    } else if (item.id == 'minTemperatureFilter' || item.id == 'maxTemperatureFilter') {
+                        if ($(itemId).val() < -100 || $(itemId).val() > 200) {
+                            $(itemId).after("<label id=\"" + item.id + "-error\" class=\"error\" for=\"" + item.id + "\">Please enter a vaule between -100 and 200.</label>")
+                        }
+                    } else if ($(itemId).val() < 0 || $(itemId).val() > 300) {
+                        $(itemId).after("<label id=\"" + item.id + "-error\" class=\"error\" for=\"" + item.id + "\">Please enter a vaule between 0 and 300.</label>")
                     }
                 }
             }
@@ -153,9 +163,9 @@
                             html = html + "<td>" + item.propertyMap[key] + "</td>"
                         });
                         html = html + "<td class=\"text-end\">";
-                        html = html + "<button id=\"updateEntityButton_" + entityIndex + "\" class=\"btn btn-primary btn-sm entity-update\" data-bs-toggle=\"modal\" data-bs-target=\"#updateEntityModel\">Update</button>";
+                        html = html + "<button id=\"updateEntityButton_" + entityIndex + "\" class=\"btn btn-primary btn-sm entity-update\" data-bs-toggle=\"modal\" data-bs-target=\"#updateEntityModel\">Update</button>&nbsp;";
                         html = html + "<button id=\"removeEntityButton_" + entityIndex + "\" class=\"btn btn-danger btn-sm\">Delete</button>";
-                        html = html + "</tr>";
+                        html = html + "</td></tr>";
                     });
                     html = html + "</tbody>"
                     $('#result-table').html(html).show();
@@ -492,8 +502,8 @@
         });
     };
 
-    function showPrivacy() {
-        $('#main-context').load('./showPrivacy');
+    function initPrivacy() {
+        $('#main-context').load('./initPrivacy');
         $(document).attr('title', "Privacy Policy - Azure Tables Demo Application");
     };
 
@@ -669,6 +679,6 @@
         $('#applicationLink').on('click', function(){initAllRows();});
         $('#homeLink').on('click', function(){initAllRows();});
         $('#filterLink').on('click', function(){initFilter();});
-        $('#privacyLink').attr('href', 'javascript:showPrivacy()');
+        $('#privacyLink').attr('href', 'javascript:initPrivacy()');
         initAllRows();
     });

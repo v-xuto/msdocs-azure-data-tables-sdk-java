@@ -145,12 +145,9 @@
 		<profile>
 			<id>local</id>
 			<properties>
-				<azure.tables.uri>
-					<![CDATA[YOUR-DATA-TABLES-SERVICE-URL]]>
-				</azure.tables.uri>
-				<azure.tables.account>YOUR-DATA-TABLES-SERVICE-ACCOUNT</azure.tables.account>
-				<azure.tables.key>YOUR-DATA-SERVICE-ACCESS-KEY</azure.tables.key>
-				<azure.tables.secondaryKey>YOUR-DATA-TABLES-SERVICE-SECONDARY-ACCESS-KEY</azure.tables.secondaryKey>
+				<azure.tables.connection.string>
+					<![CDATA[YOUR-TABLE-SERVICE-CONNECTION-STRING]]>
+				</azure.tables.connection.string>
 				<azure.tables.tableName>YOUR-DATA-TABLE-NAME</azure.tables.tableName>
 			</properties>
 			<activation>
