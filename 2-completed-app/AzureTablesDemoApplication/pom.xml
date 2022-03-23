@@ -148,7 +148,7 @@
 				<azure.tables.connection.string>
 					<![CDATA[YOUR-TABLE-SERVICE-CONNECTION-STRING]]>
 				</azure.tables.connection.string>
-				<azure.tables.tableName>YOUR-DATA-TABLE-NAME</azure.tables.tableName>
+				<azure.tables.tableName>WeatherData</azure.tables.tableName>
 			</properties>
 			<activation>
 				<activeByDefault>true</activeByDefault>

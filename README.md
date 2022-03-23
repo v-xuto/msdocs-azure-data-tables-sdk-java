@@ -28,8 +28,24 @@ The fastest way to get started is to run the completed application.  For the app
 
 1. clone or download the sample application from https://github.com/Azure-Samples/msdocs-azure-tables-sdk-java.git
 2. Use either the Azure CLI or Azure PowerShell script in the scripts directory to create the appropriate Azure resources.  If you do not have Azure CLI or Azure PowerShell installed, you may run either of these scripts in the [Azure Cloud Shell](https://shell.azure.com).
-3. Each script will return the appropriate connection string for the sample application to use.  Use the [Secret Manager](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets) to store this connection string with the key *'CosmosDatabase'* in the secrets.json file.
-4. Run the application
+3. Each script will return the appropriate connection string for the sample application to use.Switch to folder `2-completed-app`.Then, add the value of the corresponding environment variables in `pom.xml` file.
+```
+	<profiles>
+		<profile>
+			<id>local</id>
+			<properties>
+				<azure.tables.connection.string>
+					<![CDATA[YOUR-TABLE-SERVICE-CONNECTION-STRING]]>
+				</azure.tables.connection.string>
+				<azure.tables.tableName>WeatherData</azure.tables.tableName>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+```
+4. Run the application by executing the method `TablesServiceApplication.main` in [IntelliJ IDEA](https://www.jetbrains.com/idea/) or [VS Code](https://code.visualstudio.com/) and the application url is [http://localhost:8080](http://localhost:8080)
 
 ## Resources
 
